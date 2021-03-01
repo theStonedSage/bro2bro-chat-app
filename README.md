@@ -1,6 +1,6 @@
 # **BRO2BRO**
 
-![image info](./public/img/icon2.png)
+![image info](./img/icon2.png)
 
 Bro2Bro is a room based MERN chat application that lets you securely chat with your friends with the click of a button.\
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -22,7 +22,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 * Once you log in you can see the following screen.
 
-![image info](./public/img/ss.png)
+![image info](./img/ss.png)
 
 
 * To create a `myRoom` go to `create room` tag on left , type your room name and and press enter.you room will be created under `My Rooms` tag.
