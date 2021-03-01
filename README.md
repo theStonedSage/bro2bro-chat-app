@@ -16,9 +16,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     * **MyRoom** : messages are saved if you chat with these. and room persists even if you log out.
     * **QuickRoom** : messeges are not saved and room dies once session ends or you refresh.
 * Every room provides you with a joining URL which you can share with your friends to make them join.
-* UI comprises of custom antd components.
+* UI comprises of custom and antd components.
 
 ## `How to Use`
+
+/home
 
 * Once you log in you can see the following screen.
 

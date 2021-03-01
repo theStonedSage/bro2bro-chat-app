@@ -25,8 +25,7 @@ const Chat = ({nme,rom}) => {
     const [msgCount,setMsgCount] = useState(0);
 
     useEffect(()=>{
-        console.log(room);
-        socket= io(ENDPOINT);
+        
         //conection established
 
 
@@ -51,7 +50,8 @@ const Chat = ({nme,rom}) => {
     
 
     useEffect(()=>{
-        console.log('inside',room);
+        // console.log('inside',room);
+        //get messages of room from db
         axios.get(`http://localhost:4000/room/getmessages/${rom}`,{
             headers:{
                 Authorization: 'JWT ' + cookies.token
@@ -109,11 +109,11 @@ const Chat = ({nme,rom}) => {
         <div className="outerContainer">
             <div className="container">
                 <Infobar room={rom} />
-                {/* <ScrollToBottom> */}
+
                 <div style={{maxHeight:800,overflowY:'scroll',padding:'1rem 0'}}>
                     {messages.map((message,i)=>(message&&<Message key={i} message={message} name={name} />))}
                 </div>
-                {/* </ScrollToBottom> */}
+
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
         </div>
