@@ -23,11 +23,12 @@ const Chat = ({nme,rom}) => {
     const [messages,setMessages] = useState([]);
     const ENDPOINT = 'localhost:4000';
     const [msgCount,setMsgCount] = useState(0);
+    // const ENDPOINT = 'localhost:4000';
 
     useEffect(()=>{
         
         //conection established
-
+        socket= io(ENDPOINT);
 
         //emmiting join event to save the user
         socket.emit('join',{name:name,room:room},()=>{

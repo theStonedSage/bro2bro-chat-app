@@ -6,12 +6,17 @@ const rootRouter = require('./routes/root')
 const roomRouter = require('./routes/room')
 const passport = require('passport');
 const socketio = require('socket.io');
+const cors = require('cors');
 const {addUser,removeUser,getUser,getUsersInRoom,getAllUsers,updateRoom} = require('./users');
 
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server,{
+    cors: {
+      origin: '*',
+    }
+});
 mongoose.connect("mongodb+srv://admin-amit:amit@cluster0.r4z9d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology: true,useFindAndModify: false},()=>{
     console.log('db connected');
 });
@@ -43,7 +48,7 @@ io.on('connection',(socket)=>{
             socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
             updateRoom({room,remove:false});
 
-            io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+            // io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
             
         } 
         
@@ -56,8 +61,7 @@ io.on('connection',(socket)=>{
     socket.on('sendMessage', (message, callback) => {
         console.log(getAllUsers());
         const user = getUser(socket.id);
-        console.log('sending msg');
-        console.log(socket.id);
+        
         console.log(user);
         if(user) io.to(user.room).emit('message', { user: user.name, text: message });
         else socket.emit('message', { user: 'admin', text: `cannot send message`});
@@ -70,6 +74,8 @@ io.on('connection',(socket)=>{
     })
 })
 
+
+app.options('*',cors());
 app.use("/",rootRouter);
 app.use("/room",roomRouter);
 

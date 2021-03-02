@@ -3,6 +3,12 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
 const jwtSecret = require('../config/jwtConfig');
+const cors = require('cors');
+
+const options = {
+    origin:'http://localhost:3000',
+    optionsSuccessStatus:200
+}
 
 const jwt = require('jsonwebtoken');
 require('../config/passport');
@@ -14,7 +20,7 @@ router.get("/",(req,res)=>{
     res.send('api working');
 })
 
-router.post("/register",(req,res,done)=>{
+router.post("/register",cors(options),(req,res,done)=>{
     console.log(req.body);
     passport.authenticate('register',(err,user,info)=>{
         // console.log(err,user,info);
@@ -41,7 +47,7 @@ router.post("/register",(req,res,done)=>{
     })(req,res,done);
 });
 
-router.post('/login',(req,res,next)=>{
+router.post('/login',cors(options),(req,res,next)=>{
     passport.authenticate('login',(err,user,info)=>{
         if(err){
             console.log(err);
@@ -69,7 +75,7 @@ router.post('/login',(req,res,next)=>{
     })(req,res,next)
 })
 
-router.get('/getData',(req,res,next)=>{
+router.get('/getData',cors(options),(req,res,next)=>{
     passport.authenticate('jwt',{session:false},(err,user,info)=>{
         console.log('entered');
         if(err){

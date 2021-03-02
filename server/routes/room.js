@@ -4,12 +4,17 @@ const passport = require('passport');
 const User = require('../models/User');
 const jwtSecret = require('../config/jwtConfig');
 const {getUsersInRoom,updateRoom} = require('../users');
+const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
 require('../config/passport');
 
+const options = {
+    origin:'http://localhost:3000',
+    optionsSuccessStatus:200
+}
 
-router.get('/createRoom/:room',async (req,res,next)=>{
+router.get('/createRoom/:room',cors(options),async (req,res,next)=>{
     passport.authenticate('jwt',{session:false},(err,user,info)=>{
         console.log('entered');
         if(err){
@@ -59,7 +64,7 @@ router.get('/createRoom/:room',async (req,res,next)=>{
     })(req,res,next)
 })
 
-router.get('/deleteRoom/:room',async (req,res,next)=>{
+router.get('/deleteRoom/:room',cors(options),async (req,res,next)=>{
     passport.authenticate('jwt',{session:false},(err,user,info)=>{
         console.log('entered');
         if(err){
@@ -110,7 +115,7 @@ router.get('/deleteRoom/:room',async (req,res,next)=>{
     })(req,res,next)
 })
 
-router.post('/savemessage/:room',async (req,res,next)=>{
+router.post('/savemessage/:room',cors(options),async (req,res,next)=>{
     passport.authenticate('jwt',{session:false},(err,user,info)=>{
         console.log('entered');
         if(err){
@@ -170,7 +175,7 @@ router.post('/savemessage/:room',async (req,res,next)=>{
 })
 
 
-router.get('/getmessages/:room',async (req,res,next)=>{
+router.get('/getmessages/:room',cors(options),async (req,res,next)=>{
     passport.authenticate('jwt',{session:false},(err,user,info)=>{
         console.log('entered');
         if(err){
