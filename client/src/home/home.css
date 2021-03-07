@@ -1,0 +1,145 @@
+.mainWrapper-1{
+    display: flex;
+    height: 100vh;
+    background-color: #fff;
+    position: relative;
+    padding: 1rem 1rem 1rem 0;
+
+}
+
+.iconWrapper{
+    width:7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 2px solid rgb(238, 235, 235);
+}
+
+.toggleContainer{
+    width: 100%;
+    /* width: 300rem; */
+    position: relative;
+    
+}
+
+.iconSidebar{
+    
+    /* background-color: blue; */
+    width:27%;
+    /* height: 100%; */
+}
+
+.iconContainer0{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+.iconContainer0 .normal{
+    padding: 0.8rem 0.8rem;
+    border-radius: 1rem;
+    display: flex;
+    transition: 0.3s ease-out;
+}
+
+.iconContainer0 .normal:hover{
+    padding: 0.8rem 0.8rem;
+    background:#cef5ee;
+    color:#00a389;
+    border-radius: 1rem;
+    display: flex;
+    transition: 0.3s ease-in;
+}
+
+
+.iconContainer0 .selected{
+    padding: 0.8rem 0.8rem;
+    background:#cef5ee;
+    color:#00a389;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.icon{
+    font-size: 1.5rem;
+    color:rgb(167, 167, 167);
+}
+
+.circularIcon{
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 50%;
+}
+
+.chatWrapper{
+    width:100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* left:0; */
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    transition: width 0.3s ease-in-out;
+    background-color: burlywood;
+    height: 100%;
+}
+
+.rightSidebar{
+    /* background-color: plum; */
+    width: 20%;
+    margin-left: auto;
+    /* height: ; */
+}
+
+.iconLong{
+    height: 40%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.w-cut{
+    width: 73% ;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .iconWrapper{
+        width: 15%;
+    }
+
+    .icon{
+        font-size: 1.2rem;
+    }
+
+    .toggleContainer{
+        width: 300rem;
+    }
+
+    .iconLong{
+        /* background-color: grey; */
+        /* padding: 1rem; */
+    }
+    
+    .w-cut{
+        width: 0%;
+    }
+    
+    .circularIcon{
+        height: 2.7rem;
+        width: 2.7rem;
+    }
+
+    .iconSidebar{
+        width: auto;
+    }
+  }
+
+  
